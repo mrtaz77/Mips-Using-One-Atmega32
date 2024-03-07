@@ -6,6 +6,8 @@ Is it possible to simulate the mips architecture using an atmega32 ?
 - [Instruction Formats](#instruction_formats)
 - [Approach to Implement push-pop](#approach-to-implement-the-push-and-pop-instructions)
 - [Tools](#tools)
+- [How to run](#how-to-run)
+- [Register Selection Bits](#register-map)
 
 ## Mips
 MIPS (Microprocessor without Interlocked Pipelined Stages) is a family of reduced instruction set computer (RISC) instruction set architectures (ISA) developed by MIPS Computer Systems, now MIPS Technologies.
@@ -71,3 +73,28 @@ We maintained a stack memory in the Data Memory Unit and a stack pointer in the 
 ## Tools
 1. Atmel Studio 7.0 . Download [link](https://www.microchip.com/en-us/tools-resources/archives/avr-sam-mcus)
 2. Proteus Version 8.15. Download [link](https://engineeringsoftware.net/electronics/proteus-8-15-full-crack/).
+
+## How To Run
+1. Go to the [compiler](/Codes/) directory and open a .asm file with the desired mips assembly.
+2. Run the [asm_to_hex.py](/Codes/asm_to_hex.py).
+```
+python asm_to_hex.py <input>.asm
+```
+3. A file named `atmega32_instruction.txt` will be formed. It simulates the instruction memeory of our mips architecture and has the current instruction loaded in it. Copy it.
+4. Open the [main.c](/Simulation/Simulation/main.cpp) in atmel studio and navigate to the **unsigned int instruction[256]** array. Paste the instruction as R.H.S of this array.
+
+5. Build the solution and load the new hex file formed into the atmega32.(For proteus simulation, it will be loaded automatically).
+
+## Register map
+| $S_{2}$ | $S_{1}$ | $S_{0}$ | Register |
+|---------|---------|---------|----------|
+|    0     |    0     |    0     |     \$zero    |
+|    0     |    0     |    1     |     \$t0     |
+|    0     |    1     |    0     |    \$t1      |
+|    0     |    1     |    1     |    \$t2      |
+|    1     |    0     |    0     |    \$t3      |
+|    1     |    0     |    1     |    \$t4      |
+|    1     |    1     |    0     |    \$t5*      |
+|    1     |    1     |    1     |    \$sp      |
+\* reserved for push pop operations
+
