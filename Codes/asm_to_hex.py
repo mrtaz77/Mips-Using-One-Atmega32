@@ -123,7 +123,6 @@ def read_file(input_file_path):
 		sys.exit(1)
 
 def gen_intermediate_code_for_push_pop(mips_code):
-	parsed_code = []
 	for i,line in enumerate(mips_code):
 		if 'push' in line:
 			reg = line.split()[1]  # Extract the register from the push instruction
@@ -146,13 +145,11 @@ def gen_intermediate_code_for_push_pop(mips_code):
 				'addi $sp, $sp, 1\n',
 				f'lw {reg}, 0($sp)\n'
 			]
-		else:
-			parsed_code.append(line)
-	return parsed_code
+	return mips_code
 
 def write_hex_file(hex_file_path, hex_codes):
     # # Convert hexadecimal strings to integers
-	data = [int(line.strip(), 16) for line in hex_codes[1:]]
+	data = [int(line.strip(), 16) for line in hex_codes]
 	# Pad the data list with zeros to make it 256 elements long
 	data += [0x0000] * (256 - len(data))
 	with open(hex_file_path, 'w') as outfile:

@@ -15,15 +15,21 @@ and $t0, $t1, $t3		; t0 = 3 AND 6 = 2
 or $t2, $t0, $t4 		; t2 = 2 OR 15 = 15
 j label2				; jump to label2; `j 26`
 label3:
+sw $t0, 0($sp)
 subi $sp, $sp, 1
+sw $t2, 0($sp)
 subi $sp, $sp, 1
 ori $t0, $t0, 5			; t0 = 2 OR 5 = 7
+addi $sp, $sp, 1
 lw $t0, 0($sp)
 andi $t2, $t2, 6		; t2 = 15 AND 6 = 6
+lw $t5, 2($t2)
 sw $t5, 0($sp)
 subi $sp, $sp, 1
+addi $sp, $sp, 1
 lw $t2, 0($sp)
 nor $t2, $t2, $t2 		; t2 = ~(3 OR 3) = 12
+addi $sp, $sp, 1
 lw $t2, 0($sp)
 j end					; jump to end; `j 29`
 label2:
