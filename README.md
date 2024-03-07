@@ -96,5 +96,6 @@ python asm_to_hex.py <input>.asm
 |    1     |    0     |    1     |    \$t4      |
 |    1     |    1     |    0     |    \$t5*      |
 |    1     |    1     |    1     |    \$sp      |
+
 \* reserved for push pop operations
 
