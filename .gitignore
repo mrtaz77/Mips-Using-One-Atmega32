@@ -1,3 +1,20 @@
+# added
+.lh/
+.vs/
+.vscode/
+Project Backups/
+*.atsln
+*.cproj
+*.xml
+*.elf
+*.eep
+*.map
+*.lss
+Makefile
+*.mk
+*.workspace
+*.cppproj
+
 # Prerequisites
 *.d
 
