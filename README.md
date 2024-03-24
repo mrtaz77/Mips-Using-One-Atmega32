@@ -80,11 +80,11 @@ We maintained a stack memory in the Data Memory Unit and a stack pointer in the 
 ```
 python asm_to_hex.py <input>.asm
 ```
-3. A file named `atmega32_instruction.txt` will be formed. It simulates the instruction memeory of our mips architecture and has the current instruction loaded in it. Copy it.
+3. A file named `atmega32_instruction.txt` will be formed. It simulates the instruction memory of our mips architecture and has the current instruction loaded in it. Copy it.
 4. Open the [main.c](/Simulation/Simulation/main.cpp) in atmel studio and navigate to the **unsigned int instruction[256]** array. Paste the instruction as R.H.S of this array.
 5. Build the solution and load the new hex file formed into the atmega32.(For proteus simulation, it will be loaded automatically).
 6. Open the [circuit](Simulation/Mips%20Ckt.pdsprj) using proteus.
-7. Execute next instruction via clock, see the desired register using switch . Supports reset switch.**Clock is negative edge triggered**.
+7. **Clock is negative edge triggered**. Execute next instruction via clock, see the desired register using the following switches . Also, supports a reset switch for reseting program counter.
 
 ## Register map
 | $S_{2}$ | $S_{1}$ | $S_{0}$ | Register |
